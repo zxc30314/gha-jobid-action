@@ -51,7 +51,7 @@ runs:
         Write-Host "Base URL: $baseUrl"
         Write-Host "API Path: $GITHUB_API"
         Write-Host "Per Page: $perPage"
-        $url = "$baseUrl$GITHUB_API?per_page=$perPage"
+        $url = [System.Uri]::new($baseUrl.TrimEnd('/') + $GITHUB_API + "?per_page=$perPage")
         
         Write-Host "Repository : ${{ inputs.repository }}"
         Write-Host "Env Repository : $env:INPUT_REPOSITORY"
