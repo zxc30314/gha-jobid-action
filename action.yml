@@ -46,7 +46,7 @@ runs:
       shell: pwsh
       run: |
         Write-Host "Repository : ${{ inputs.repository }}"
-        Write-Host "Env Repository : $env:INPUT_GITHUB_TOKEN"
+        Write-Host "Env Repository : $env:INPUT_REPOSITORY"
         $GITHUB_API = "/repos/$env:INPUT_REPOSITORY/actions/runs/$env:INPUT_RUN_ID/jobs"
         $url = "https://api.github.com$GITHUB_API?per_page=$env:INPUT_PER_PAGE"
         
