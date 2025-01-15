@@ -47,7 +47,7 @@ runs:
       run: |
         $GITHUB_API = "/repos/$env:INPUT_REPOSITORY/actions/runs/$env:INPUT_RUN_ID/jobs"
         $url = "https://api.github.com$GITHUB_API?per_page=$env:INPUT_PER_PAGE"
-
+        Write-Host "Request URL: $url"
         $response = Invoke-RestMethod -Uri $url -Headers @{
             Authorization = "Bearer $env:INPUT_GITHUB_TOKEN"
             Accept = "application/vnd.github+json"
