@@ -48,6 +48,9 @@ runs:
         $baseUrl = "https://api.github.com"
         $GITHUB_API = "/repos/$env:INPUT_REPOSITORY/actions/runs/$env:INPUT_RUN_ID/jobs"
         $perPage = $env:INPUT_PER_PAGE
+        Write-Host "Base URL: $baseUrl"
+        Write-Host "API Path: $GITHUB_API"
+        Write-Host "Per Page: $perPage"
         $url = "$baseUrl$GITHUB_API?per_page=$perPage"
         
         Write-Host "Repository : ${{ inputs.repository }}"
