@@ -45,8 +45,11 @@ runs:
         INPUT_PER_PAGE: ${{ inputs.per_page }}
       shell: pwsh
       run: |
+        $baseUrl = "https://api.github.com"
         $GITHUB_API = "/repos/$env:INPUT_REPOSITORY/actions/runs/$env:INPUT_RUN_ID/jobs"
-        $url = "https://api.github.com$GITHUB_API?per_page=$env:INPUT_PER_PAGE"
+        $perPage = $env:INPUT_PER_PAGE
+        $url = "$baseUrl$GITHUB_API?per_page=$perPage"
+        
         Write-Host "Repository : ${{ inputs.repository }}"
         Write-Host "Env Repository : $env:INPUT_REPOSITORY"
         Write-Host "Request API: $GITHUB_API"  # 打印出拼接的 URL，检查其正确性
